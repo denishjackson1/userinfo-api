@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: userapi-deployment
+  labels:
+    app: userapi
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: userapi
+  template:
+    metadata:
+      labels:
+        app: userapi
+    spec:
+      containers:
+      - name: userapi
+        image: denishjackson/userapi-info:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DATABASE_URL
+          value: "postgresql://jyftyyhmagqefwtz:Fk^R14%0oMC5FoOplDDQMyl^ks6A-i6%@102.134.147.233:32761/xgvnmdlqeonaadlrroxndrit"  # Ensure this is configured correctly
